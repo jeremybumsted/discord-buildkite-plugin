@@ -1,0 +1,12 @@
+name: Discord Notification
+description: A Buildkite plugin to send notifications to Discord using Discord's channel webhook feature
+author: "@jeremybumsted"
+requirements:
+   - go
+   - bash
+configuration:
+    properties:
+      message:
+         type: string
+      webhook-url:
+         type: string
