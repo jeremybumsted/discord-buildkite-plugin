@@ -3,5 +3,8 @@ set -euo pipefail
 
 d=$(dirname -- "$( dirname -- "${BASH_SOURCE[0]}" )"  &> /dev/null && pwd )
 
+
+echo ${d}
+
 echo "--- building plugin hooks"
 go build -C "${d}" -o "$d/hooks/pre-exit"
