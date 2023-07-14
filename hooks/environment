@@ -12,7 +12,7 @@ binaryUrl="${baseUrl}/${pluginVersion}/discord-buildkite-plugin_${os}_${arch}.ta
 fileName="discord-buildkite-plugin_${os}_${arch}.tar.gz"
 
 
-echo "${binaryURl}"
+echo "${binaryUrl}"
 curl -OL "${binaryUrl}"
 
 
