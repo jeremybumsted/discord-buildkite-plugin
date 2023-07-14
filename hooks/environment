@@ -8,10 +8,14 @@ baseUrl="https://github.com/jeremybumsted/discord-buildkite-plugin/releases/down
 pluginVersion=$(git describe --tags)
 os=$(uname -o)
 arch=$(uname -m)
-binaryUrl="${baseUrl}/${pluginVersion:-"v0.1.11"}/discord-buildkite-plugin_${os}_${arch}.tar.gz"
+binaryUrl="${baseUrl}/${pluginVersion}/discord-buildkite-plugin_${os}_${arch}.tar.gz"
 fileName="discord-buildkite-plugin_${os}_${arch}.tar.gz"
 
+
+echo "${binarURl}"
 curl -OL "${binaryUrl}"
+
+
 
 echo "~~~ 🔌 Preparing plugin"
 
