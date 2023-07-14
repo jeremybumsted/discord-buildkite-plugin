@@ -5,14 +5,14 @@ d=$(dirname -- "$( dirname -- "${BASH_SOURCE[0]}" )"  &> /dev/null && pwd )
 
 # Set up the release URL so we can retrieve our binary
 baseUrl="https://github.com/jeremybumsted/discord-buildkite-plugin/releases/download"
-pluginVersion=$(git describe --tags)
+pluginVersion=$(cd "${d}" && git describe --tags $(git rev-list --tags --max-count=1))
 os=$(uname -o)
 arch=$(uname -m)
 binaryUrl="${baseUrl}/${pluginVersion}/discord-buildkite-plugin_${os}_${arch}.tar.gz"
 fileName="discord-buildkite-plugin_${os}_${arch}.tar.gz"
 
 
-echo "${binarURl}"
+echo "${binaryURl}"
 curl -OL "${binaryUrl}"
 
 
