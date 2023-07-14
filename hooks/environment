@@ -3,5 +3,18 @@ set -euo pipefail
 
 d=$(dirname -- "$( dirname -- "${BASH_SOURCE[0]}" )"  &> /dev/null && pwd )
 
-echo "--- building plugin hooks"
-go build -C "${d}" -o "$d/hooks/pre-exit"
+# Set up the release URL so we can retrieve our binary
+baseUrl="https://github.com/jeremybumsted/discord-buildkite-plugin/releases/download"
+pluginVersion=$(git describe --tags)
+os=$(uname -o)
+arch=$(uname -m)
+binaryUrl="${baseUrl}/${pluginVersion:-"v0.1.11"}/discord-buildkite-plugin_${os}_${arch}.tar.gz"
+fileName="discord-buildkite-plugin_${os}_${arch}.tar.gz"
+
+curl -OL "${binaryUrl}"
+
+echo "~~~ 🔌 Preparing plugin"
+
+tar -xf "${fileName}" -C "${d}"/hooks/ pre-exit
+rm "${fileName}"
+
