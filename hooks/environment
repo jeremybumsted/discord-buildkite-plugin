@@ -1,7 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-d=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# d=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# because the environment hook runs in ./hooks/environment, we
+# want to ensure that we are building a directory up
+
+d=${0%/*}
+
 
 echo "--- building plugin hooks"
 go build -C "${d}" -o "$d/hooks/pre-exit"
